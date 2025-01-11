@@ -1,0 +1,770 @@
+{
+    "$schema" : "https://json-schema.org/draft-07/schema" ,
+
+    "description" : "A GrayJay plugin config." ,
+    "title" : "Config" ,
+    "type" : "object" ,
+
+    "$comment" : "Requirements are more strict than GrayJay requires" ,
+    "$comment" : "to make sure people to don't leave it bare bones." ,
+
+    "required" : [
+
+        "description" ,
+        "name" ,
+
+        "authorUrl" ,
+        "author" ,
+
+        "scriptUrl" ,
+        "version" ,
+        "id" ,
+
+        "allowEval" ,
+        "allowUrls"
+    ],
+
+    "properties" : {
+
+        "name" : {
+
+            "markdownDescription" : "Name of the plugin. \nLikely the same as the name of the platform it may integrates." ,
+            "description" : "Name of the plugin. \nLikely the same as the name of the platform it may integrates." ,
+            "title" : "Name" ,
+
+            "type" : "string" ,
+
+            "examples" : [
+                "MewTube" ,
+                "Nyamazon Video" ,
+                "@ちやんねる"
+            ]
+        },
+
+        "description" : {
+
+            "description" : "Short description of the plugin. \nLikely a description of the platform it may integrate." ,
+            "title" : "Description" ,
+
+            "type" : "string" ,
+
+            "examples" : [
+                "One of the biggest video platforms owned by Goodle." ,
+                "A subscription-based video platform owned by Nyamazon." ,
+                "An anonymous message board created by Hiroyuki Nishimura."
+            ]
+        },
+
+        "author" : {
+
+            "description" : "The author listed for the plugin." ,
+            "title" : "Author" ,
+
+            "type" : "string" ,
+
+            "examples" : [
+                "John Titor" ,
+                "リンターロ" ,
+                "@Channeler"
+            ]
+        },
+
+        "authorUrl" : {
+
+            "description" : "URL linking to the page of the plugin author." ,
+            "title" : "Author URL" ,
+
+            "$ref": "#/$defs/URL" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "platformUrl" : {
+
+            "description" : "URL linking to the platform integrated by this plugin." ,
+            "title" : "Platform URL" ,
+
+            "$ref": "#/$defs/URL" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "sourceUrl" : {
+
+            "description" : "URL linking to this hosted plugin config." ,
+            "title" : "Source URL" ,
+
+            "$ref": "#/$defs/URL" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "developerSubmitUrl" : {
+
+            "description" : "" ,
+            "title" : "Developer Submit URL" ,
+
+            "$ref": "#/$defs/URL" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "repositoryUrl" : {
+
+            "description" : "URL linking to the source code of this plugin" ,
+            "title" : "Repository URL" ,
+
+            "$ref": "#/$defs/URL" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "scriptUrl" : {
+
+            "description" : "Relative path to the plugin's entrypoint." ,
+            "title" : "Script URL" ,
+
+            "$ref": "#/$defs/Script" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "version" : {
+
+            "description" : "Version number of this plugin." ,
+            "title" : "Version" ,
+
+            "type" : "integer" ,
+
+            "examples" : [ 1 ]
+        },
+
+        "iconUrl" : {
+
+            "description" : "Relative path to the plugin's icon." ,
+            "title" : "Icon URL" ,
+
+            "$ref": "#/$defs/Icon" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "id" : {
+
+            "description" : "UUID4 identifying this plugin." ,
+            "title" : "Id" ,
+
+            "type" : "string" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "scriptSignature" : {
+
+            "description" : "" ,
+            "title" : "Script : Signature" ,
+            "type" : "string" ,
+
+
+            "examples" : [
+
+            ]
+        },
+
+        "scriptPublicKey" : {
+
+            "description" : "" ,
+            "title" : "Script : Public Key" ,
+
+            "type" : "string" ,
+
+            "examples" : [
+
+            ]
+        },
+
+        "packages" : {
+
+            "description" : "List of NPM package names to load as dependencies" ,
+            "title" : "Packages" ,
+
+            "type" : "array" ,
+
+            "uniqueItems" : true ,
+
+            "items" : {
+                "enum" : [
+                    "DOMParser" ,
+                    "Utilities" ,
+                    "Http"
+                ]
+            }
+        },
+
+
+        "allowAllHttpHeaderAccess" : {
+
+            "description" : "" ,
+            "title" : "Allow Access To All HTTP Headers" ,
+
+            "type" : "boolean"
+        },
+
+        "allowEval" : {
+
+            "description" : "Allows for remote code execution." ,
+            "title" : "Allow Evaluation" ,
+
+            "type" : "boolean"
+        },
+
+        "allowUrls" : {
+
+            "description" : "List of URLs the plugin is allowed to connect to." ,
+            "title" : "Allowed URLs" ,
+
+            "type" : "array" ,
+
+            "uniqueItems" : true ,
+            "minItems" : 1 ,
+
+            "items" : {
+
+                "oneOf" : [{
+                    "description" : "Allows to access any url." ,
+                    "title" : "Everywhere" ,
+                    "enum" : [ "everywhere" ] ,
+                    "type" : "string"
+                },{
+                    "$ref": "#/$defs/Wildcard-Host"
+                }]
+            },
+
+            "examples" : [
+                "everywhere" ,
+                "MewTube.com"
+            ]
+        },
+
+        "enableInSearch" : {
+
+            "description" : "" ,
+            "title" : "Enable : In Search" ,
+
+            "default" : true ,
+
+            "type" : "boolean"
+        },
+
+        "enableInHome" : {
+
+            "description" : "" ,
+            "title" : "Enable : In Home" ,
+
+            "default" : true ,
+
+            "type" : "boolean"
+        },
+
+        "subscriptionRateLimit" : {
+
+            "description" : "" ,
+            "title" : "Subscription Rate Limit" ,
+
+            "type" : "integer"
+        },
+
+        "maxDownloadParallelism" : {
+
+            "description" : "" ,
+            "title" : "Max Parallel Downloads" ,
+
+            "minimum" : 1 ,
+
+            "type" : "integer"
+        },
+
+        "reduceFunctionsInLimitedVersion" : {
+
+            "description" : "" ,
+            "title" : "Reduce Functions In Limited Version" ,
+
+            "type" : "boolean"
+        },
+
+        "settings" : {
+
+            "description" : "" ,
+
+            "title" : "Settings" ,
+            "type" : "array" ,
+
+            "items" : {
+                "oneOf" : [{
+
+                    "description" : "" ,
+                    "title" : "Boolean" ,
+
+                    "type" : "object" ,
+
+                    "properties" : {
+
+                        "dependency" : {
+
+                            "description" : "" ,
+                            "title" : "Dependency" ,
+
+                            "type" : "string"
+                        },
+
+                        "warningDialog" : {
+
+                            "description" : "" ,
+                            "title" : "Warning Dialog" ,
+
+                            "type" : "string"
+                        },
+
+                        "variable" : {
+                            "$ref": "#/$defs/Variable"
+                        },
+
+                        "name" : {
+
+                            "description" : "Name displayed in the interface," ,
+                            "title" : "Name" ,
+
+                            "type" : "string"
+                        },
+
+                        "description" : {
+
+                            "description" : "Text describing the setting." ,
+                            "title" : "Description" ,
+
+                            "type" : "string"
+                        },
+
+
+
+                        "default" : {
+
+                            "description" : "Text describing the setting." ,
+                            "title" : "Description" ,
+
+                            "enum" : [ "false" , "true" ] ,
+                            "type" : "string"
+                        },
+
+                        "type" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "enum" : [ "Boolean" ] ,
+                            "type" : "string"
+                        }
+                    }
+                },{
+
+                    "description" : "" ,
+                    "title" : "Dropdown" ,
+
+                    "type" : "object" ,
+
+                    "properties" : {
+
+                        "dependency" : {
+
+                            "description" : "" ,
+                            "title" : "Dependency" ,
+
+                            "type" : "string"
+                        },
+
+                        "warningDialog" : {
+
+                            "description" : "" ,
+                            "title" : "Warning Dialog" ,
+
+                            "type" : "string"
+                        },
+
+                        "variable" : {
+                            "$ref": "#/$defs/Variable"
+                        },
+
+                        "name" : {
+
+                            "description" : "Name displayed in the interface," ,
+                            "title" : "Name" ,
+
+                            "type" : "string"
+                        },
+
+                        "description" : {
+
+                            "description" : "Text describing the setting." ,
+                            "title" : "Description" ,
+
+                            "type" : "string"
+                        },
+
+
+
+                        "default" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "pattern" : "0|[1-9][0-9]*" ,
+                            "type" : "string"
+                        },
+
+                        "type" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "enum" : [ "Dropdown" ] ,
+
+                            "type" : "string"
+                        },
+
+                        "options" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "type" : "array" ,
+
+                            "items" : {
+
+                                "description" : "" ,
+                                "title" : "" ,
+
+                                "type" : "string"
+                            }
+                        }
+                    }
+                },{
+
+                    "description" : "" ,
+                    "title" : "Header" ,
+
+                    "type" : "object" ,
+
+                    "properties" : {
+
+                        "dependency" : {
+
+                            "description" : "" ,
+                            "title" : "Dependency" ,
+
+                            "type" : "string"
+                        },
+
+                        "name" : {
+
+                            "description" : "Name displayed in the interface," ,
+                            "title" : "Name" ,
+
+                            "type" : "string"
+                        },
+
+                        "description" : {
+
+                            "description" : "Text describing the setting." ,
+                            "title" : "Description" ,
+
+                            "type" : "string"
+                        },
+
+
+                        "type" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "enum" : [ "Header" ] ,
+
+                            "type" : "string"
+                        }
+                    }
+                }]
+            },
+
+            "examples" : [{
+                "description" : "Are you a mad scientist?" ,
+                "variable" : "isSoCool" ,
+                "default" : "false" ,
+                "name" : "Mad Scientist" ,
+                "type" : "Boolean"
+            }]
+        },
+
+        "authentication" : {
+
+            "description" : "" ,
+            "title" : "" ,
+
+            "type" : "object" ,
+
+            "properties" : {
+
+                "userAgent" : {
+
+                    "description" : "" ,
+                    "title" : "User Agent" ,
+
+                    "type" : "string"
+                },
+
+                "completionUrl" : {
+
+                    "description" : "" ,
+                    "title" : "Completion URL" ,
+
+                    "$ref": "#/$defs/URL"
+                },
+
+                "loginUrl" : {
+
+                    "description" : "" ,
+                    "title" : "Login URL" ,
+
+                    "$ref": "#/$defs/URL"
+                },
+
+                "cookiesToFind" : {
+
+                    "description" : "" ,
+                    "title" : "Cookies To Find" ,
+
+                    "type" : "array" ,
+
+                    "items" : {
+
+                        "description" : "" ,
+                        "title" : "Cookie Name" ,
+
+                        "$ref": "#/$defs/Cookie"
+                    }
+                },
+
+                "headersToFind" : {
+
+                    "description" : "" ,
+                    "title" : "Headers To Find" ,
+
+                    "type" : "array" ,
+
+                    "items" : {
+
+                        "description" : "" ,
+                        "title" : "Header Name" ,
+
+                        "type" : "string"
+                    }
+                },
+
+                "domainHeadersToFind" : {
+
+                    "description" : "" ,
+                    "title" : "" ,
+
+                    "type" : "object" ,
+
+                    "patternProperties" : {
+
+                        "([-A-z0-9]+\\.)+([A-z]+)" : {
+
+                            "description" : "" ,
+                            "title" : "" ,
+
+                            "minItems" : 1 ,
+
+                            "type" : "array" ,
+
+                            "items" : {
+
+                                "description" : "" ,
+                                "title" : "HTTP Header" ,
+
+                                "type" : "string"
+                            }
+                        }
+                    }
+                },
+
+                "cookiesExclOthers" : {
+
+                    "description" : "" ,
+                    "title" : "Cookies Exclude Others" ,
+
+                    "type" : "boolean"
+                },
+
+                "loginButton" : {
+
+                    "description" : "" ,
+                    "title" : "Login Button" ,
+
+                    "type" : "string"
+                },
+
+                "loginWarning" : {
+
+                    "description" : "" ,
+                    "title" : "Login Warning" ,
+
+                    "type" : "string"
+                }
+            }
+        },
+
+        "supportedClaimTypes" : {
+
+            "description" : "" ,
+            "title" : "Supported Claim Types" ,
+
+            "type" : "array" ,
+
+            "items" : {
+                "type" : "integer"
+            }
+        },
+
+        "primaryClaimFieldType" : {
+
+            "description" : "" ,
+            "title" : "Primary Claim Field Type" ,
+
+            "type" : "integer"
+        },
+
+        "captcha" : {
+
+            "description" : "" ,
+            "title" : "" ,
+
+            "type" : "object" ,
+
+            "properties" : {
+
+                "userAgent" : {
+
+                    "description" : "" ,
+                    "title" : "User Agent" ,
+
+                    "type" : "string"
+                },
+
+                "captchaUrl" : {
+
+                    "description" : "" ,
+                    "title" : "Captcha URL" ,
+
+                    "oneOf" : [{
+                        "type" : "null"
+                    },{
+                        "type" : "string"
+                    }]
+                },
+
+                "cookiesToFind" : {
+
+                    "description" : "" ,
+                    "title" : "Cookies To Find" ,
+
+                    "type" : "array" ,
+
+                    "items" : {
+
+                        "description" : "" ,
+                        "title" : "Cookie Name" ,
+
+                        "$ref": "#/$defs/Cookie"
+                    }
+                }
+            }
+        },
+
+        "constants" : {
+
+            "description" : "" ,
+            "title" : "Constants" ,
+
+            "type" : "object" ,
+
+            "patternProperties" : {
+                "[A-z_][A-z0-9_]*" : {
+
+                    "description" : "" ,
+                    "title" : "Constant" ,
+
+                    "type" : "string"
+                }
+            }
+        }
+    },
+
+    "$defs" : {
+
+        "Variable" : {
+
+            "description" : "Name of the variable containing the setting." ,
+            "title" : "Variable" ,
+
+            "pattern" : "[A-z_][A-z0-9_]*" ,
+            "type" : "string"
+        },
+
+        "Cookie" : {
+
+            "$comment" : "Technically cookie names can contain various other" ,
+            "$comment" : "characters but since it isn't consistently" ,
+            "$comment" : "implemented nor used much I used this stricter form" ,
+
+            "pattern" : "[A-z0-9_-]" ,
+            "type" : "string"
+        },
+
+        "URL" : {
+            "pattern" : "^https://" ,
+            "format" : "uri" ,
+            "type" : "string"
+        },
+
+        "Wildcard-Host" : {
+            "pattern" : "(\\*\\.)?([-A-z0-9]+\\.)+([A-z]+)" ,
+            "type" : "string"
+        },
+
+        "Icon" : {
+            "pattern" : "\\.(\\/[ a-zA-Z0-9_\\-]+)+\\.(webp|png)$" ,
+            "type" : "string"
+        },
+
+        "Script" : {
+            "pattern" : "\\.(\\/[ a-zA-Z0-9_\\-]+)+\\.js$" ,
+            "type" : "string"
+        }
+    }
+}
