@@ -1,7 +1,7 @@
 
 # GrayJay Plugin Schema
 
-Community maintained JSON schema for GrayJay plugin configs.
+Community maintained [JSON Schema] for [GrayJay Plugin] configs.
 
 <br/>
 
@@ -38,4 +38,6 @@ number and a build / fix subversion in the following form:
 
 
 [GrayJay Release]: https://gitlab.futo.org/videostreaming/grayjay/-/tags
+[GrayJay Plugin]: https://plugins.grayjay.app/
+[JSON Schema]: https://json-schema.org/
 [Release]: https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases
