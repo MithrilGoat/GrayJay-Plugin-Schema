@@ -14,7 +14,7 @@ Simply add the following schema property to your config.
 ```
 
 ```json
-    "$schema" : "https://raw.githubusercontent.com/MithrilGoat/GrayJay-Plugin-Schema/refs/tags/278.0/Source/mod.json" ,
+    "$schema" : "https://raw.githubusercontent.com/MithrilGoat/GrayJay-Plugin-Schema/refs/tags/278.1/Source/mod.json" ,
 ```
 
 Where `<Version>` is whatever [Release] you want to use , though  
