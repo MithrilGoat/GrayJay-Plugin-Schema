@@ -7,18 +7,31 @@ Community maintained [JSON Schema] for [GrayJay Plugin] configs.
 
 ## Integration
 
-Simply add the following schema property to your config.
+Simply add one of the following schema properties to your config.
+
+### Latest
+
+This links the latest version of the schema.
 
 ```json
-    "$schema" : "https://raw.githubusercontent.com/MithrilGoat/GrayJay-Plugin-Schema/refs/tags/<Version>/Source/mod.json" ,
+    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/latest/download/Schema.json" ,
 ```
+
+### Specific
+
+This links a named version of the schema.
 
 ```json
-    "$schema" : "https://raw.githubusercontent.com/MithrilGoat/GrayJay-Plugin-Schema/refs/tags/278.1/Source/mod.json" ,
+    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/<Version>/Schema.json" ,
 ```
 
-Where `<Version>` is whatever [Release] you want to use , though  
-generally it is recommended to use the latest version available.
+`<Version>` is whatever [Release] you want to use.
+
+```json
+    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/278.2/Schema.json" ,
+```
+
+
 
 <br/>
 
@@ -32,7 +45,7 @@ number and a build / fix subversion in the following form:
 ```
 
 ```txt
-278.0
+278.2
 ```
 
 
