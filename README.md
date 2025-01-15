@@ -7,28 +7,34 @@ Community maintained [JSON Schema] for [GrayJay Plugin] configs.
 
 ## Integration
 
-Simply add one of the following schema properties to your config.
+Simply add one of the following links as your `$schema` property.
+
+```json
+{
+    "$schema" : "<Link>"
+}
+```
 
 ### Latest
 
 This links the latest version of the schema.
 
-```json
-    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/latest/download/Schema.json" ,
+```txt
+https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/latest/download/Schema.json
 ```
 
 ### Specific
 
 This links a named version of the schema.
 
-```json
-    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/<Version>/Schema.json" ,
+```txt
+https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/<Version>/Schema.json
 ```
 
 `<Version>` is whatever [Release] you want to use.
 
-```json
-    "$schema" : "https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/278.2/Schema.json" ,
+```txt
+https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/278.2/Schema.json
 ```
 
 
