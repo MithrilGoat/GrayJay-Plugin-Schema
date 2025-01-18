@@ -34,7 +34,7 @@ https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/<Version>
 `<Version>` is whatever [Release] you want to use.
 
 ```txt
-https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/278.2/Schema.json
+https://github.com/MithrilGoat/GrayJay-Plugin-Schema/releases/download/281.0/Schema.json
 ```
 
 
@@ -51,7 +51,7 @@ number and a build / fix subversion in the following form:
 ```
 
 ```txt
-278.2
+281.0
 ```
 
 
