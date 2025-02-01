@@ -28,7 +28,7 @@
 
         "name" : {
 
-            "markdownDescription" : "Name of the plugin. \nLikely the same as the name of the platform it may integrates." ,
+            "markdownDescription" : "Name of the plugin. \n\n*Likely the same as the name of the platform it may integrates.*" ,
             "description" : "Name of the plugin. \nLikely the same as the name of the platform it may integrates." ,
             "title" : "Name" ,
 
@@ -43,6 +43,7 @@
 
         "description" : {
 
+            "markdownDescription" : "Short description of the plugin. \n\n*Likely a description of the platform it may integrate.*" ,
             "description" : "Short description of the plugin. \nLikely a description of the platform it may integrate." ,
             "title" : "Description" ,
 
@@ -109,13 +110,15 @@
 
         "developerSubmitUrl" : {
 
-            "description" : "" ,
+            "markdownDescription" : "URL of the endpoint to which GrayJay should send reports. \n\n[Read up on the format of the report data](https://gitlab.futo.org/videostreaming/grayjay/-/blob/master/app/src/main/java/com/futo/platformplayer/engine/packages/PackageBridge.kt#L160)" ,
+            "description" : "URL of the endpoint to which GrayJay should send reports. \nCheck the following link on the format of the report: \nhttps://gitlab.futo.org/videostreaming/grayjay/-/blob/master/app/src/main/java/com/futo/platformplayer/engine/packages/PackageBridge.kt#L160" ,
             "title" : "Developer Submit URL" ,
 
-            "$ref": "#/$defs/URL" ,
+            "$ref" : "#/$defs/URL" ,
 
             "examples" : [
-
+                "https://Channelers.Com/Reporty/New" ,
+                "https://Report.BirbPlugins.Dev/"
             ]
         },
 
@@ -525,11 +528,7 @@
             "properties" : {
 
                 "userAgent" : {
-
-                    "description" : "" ,
-                    "title" : "User Agent" ,
-
-                    "type" : "string"
+                    "$ref" : "#/$defs/UserAgent"
                 },
 
                 "completionUrl" : {
@@ -665,11 +664,7 @@
             "properties" : {
 
                 "userAgent" : {
-
-                    "description" : "" ,
-                    "title" : "User Agent" ,
-
-                    "type" : "string"
+                    "$ref" : "#/$defs/UserAgent"
                 },
 
                 "captchaUrl" : {
@@ -680,7 +675,7 @@
                     "oneOf" : [{
                         "type" : "null"
                     },{
-                        "type" : "string"
+                        "$ref" : "#/$defs/URL"
                     }]
                 },
 
@@ -704,24 +699,38 @@
 
         "constants" : {
 
-            "description" : "" ,
+            "markdownDescription" : "Named properties with constant values.\n\nCan be accessed with:\n```js\nplugin.config.constants\n```" ,
+            "description" : "Named properties with constant values." ,
             "title" : "Constants" ,
 
             "type" : "object" ,
 
             "patternProperties" : {
                 "[A-z_][A-z0-9_]*" : {
-
-                    "description" : "" ,
-                    "title" : "Constant" ,
-
-                    "type" : "string"
+                    "$ref" : "#/$defs/Constant"
                 }
             }
         }
     },
 
     "$defs" : {
+
+        "UserAgent" : {
+
+            "description" : "" ,
+            "title" : "User Agent" ,
+
+            "type" : "string"
+        },
+
+        "Constant" : {
+
+            "markdownDescription" : "Named constant value.\n\nCan be accessed with:\n```js\nplugin.config.constants.<Name>\n```" ,
+            "description" : "Named constant value." ,
+            "title" : "Constant" ,
+
+            "type" : "string"
+        },
 
         "Variable" : {
 
